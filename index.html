@@ -280,8 +280,8 @@
                 expandedRow.className = 'expanded';
 
                 tr.innerHTML = `
-                    <td>${formatDateTime(row.prepare)}</td>
-                    <td>${formatDateTime(row.starttime)}</td>
+                    <td>${formatTime(row.prepare)}</td>
+                    <td>${formatTime(row.starttime)}</td>
                     <td>${row.number}</td>
                     <td>${row.competition}</td>
                     <td>${row.entries}</td>
@@ -333,9 +333,9 @@
             loadStream(streamUrl);
         }
 
-        function formatDateTime(dateTimeString) {
-            const date = new Date(dateTimeString);
-            return date.toLocaleString('en-US', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' });
+        function formatTime(timeString) {
+            const date = new Date(timeString);
+            return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
         }
 
         function convertToTimezone(timestamp, offset) {
