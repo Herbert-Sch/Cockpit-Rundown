@@ -301,7 +301,9 @@
                 setInterval(() => {
                     const now = convertToTimezone(Date.now(), -5);
 
-                    if (now >= startTime && now < nextRowStartTime) {
+                    if (row.number === 'END') {
+                        tr.classList.remove('blink-green', 'blink-red');
+                    } else if (now >= startTime && now < nextRowStartTime) {
                         tr.classList.remove('blink-red');
                         tr.classList.add('blink-green');
                         hasGreen = true;
@@ -309,11 +311,6 @@
                         tr.classList.add('blink-red');
                         hasBlinkRed = true;
                     } else {
-                        tr.classList.remove('blink-green', 'blink-red');
-                    }
-
-                    // Ensure the last entry doesn't stay green after its time window ends
-                    if (index === filteredData.length - 1 && now >= nextRowStartTime) {
                         tr.classList.remove('blink-green', 'blink-red');
                     }
 
