@@ -227,24 +227,25 @@
             fetch('cockpitrundownupload.csv')
                 .then(response => response.text())
                 .then(csvText => {
-                    const rows = csvText.split('\n').map(row => row.split(','));
+                    const rows = csvText.split('\n').map(row => row.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/)); // Besseres CSV-Splitting
                     const [headers, ...data] = rows;
 
-                    tabs = [...new Set(data.map(row => row[0]))];
+                    tabs = [...new Set(data.map(row => row[0]?.trim()))]; // Leere Werte trimmen und ignorieren
                     scheduleData = data.map(row => ({
-                        tab: row[0],
-                        prepare: row[1],
-                        starttime: row[2],
-                        number: row[3],
-                        competition: row[4],
-                        entries: row[5],
-                        details: row[6],
-                        stream: row[7] || defaultStream
+                        tab: row[0]?.trim() || "Default", // Standardwert für leere Felder
+                        prepare: row[1]?.trim(),
+                        starttime: row[2]?.trim(),
+                        number: row[3]?.trim(),
+                        competition: row[4]?.trim(),
+                        entries: row[5]?.trim(),
+                        details: row[6]?.trim(),
+                        stream: row[7]?.trim() || defaultStream // Fallback für den Stream
                     }));
 
                     renderTabs();
                     renderTable(tabs[0]);
-                });
+                })
+                .catch(error => console.error("CSV konnte nicht geladen werden:", error));
         }
 
         function renderTabs() {

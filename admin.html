@@ -222,11 +222,20 @@
             fetch('cockpitrundownupload.csv')
                 .then(response => response.text())
                 .then(csvText => {
-                    const rows = csvText.split('\n').map(row => row.split(','));
+                    const rows = csvText.split('\n').map(row => row.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/));
                     const [headers, ...data] = rows;
 
-                    tabs = [...new Set(data.map(row => row[0]))];
-                    scheduleData = data;
+                    tabs = [...new Set(data.map(row => row[0]?.trim()))];
+                    scheduleData = data.map(row => ({
+                        tab: row[0]?.trim() || "Default",
+                        prepare: row[1]?.trim(),
+                        starttime: row[2]?.trim(),
+                        number: row[3]?.trim(),
+                        competition: row[4]?.trim(),
+                        entries: row[5]?.trim(),
+                        details: row[6]?.trim(),
+                        stream: row[7]?.trim() || ""
+                    }));
 
                     renderTabs();
                     renderTable();
@@ -243,7 +252,7 @@
                 button.onclick = () => {
                     document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
-                    renderTable();
+                    renderTable(tab);
                 };
                 tabsContainer.appendChild(button);
             });
@@ -258,16 +267,18 @@
             }
         }
 
-        function renderTable() {
+        function renderTable(activeTab = tabs[0]) {
             tableBody.innerHTML = '';
-            scheduleData.forEach((row, index) => {
+            scheduleData.filter(row => row.tab === activeTab).forEach((row, index) => {
                 const tr = document.createElement('tr');
-                row.forEach((cell, index) => {
+
+                Object.values(row).forEach(cell => {
                     const td = document.createElement('td');
                     td.textContent = cell;
                     td.contentEditable = true;
                     tr.appendChild(td);
                 });
+
                 const actionTd = document.createElement('td');
                 actionTd.innerHTML = '<span class="delete-row" onclick="deleteRow(' + index + ')">X</span>';
                 tr.appendChild(actionTd);
@@ -285,33 +296,30 @@
             const activeTab = document.querySelector('.tabs button.active').textContent;
 
             lines.forEach(line => {
-                const parts = line.split(/\s+/);
-                const time = parts.slice(0, 2).join(' ');
-                const rest = parts.slice(2).join(' ').split(' ');
-
-                const entry = [
-                    activeTab,
-                    time,
-                    time,
-                    rest[0], // Nr.
-                    rest.slice(1, -3).join(' '), // Competition
-                    rest[rest.length - 3], // Entries
-                    rest.slice(-2).join(' '), // Details
-                    '' // Stream (default empty)
-                ];
+                const parts = line.split(',').map(part => part.trim());
+                const entry = {
+                    tab: activeTab,
+                    prepare: parts[0],
+                    starttime: parts[1],
+                    number: parts[2],
+                    competition: parts[3],
+                    entries: parts[4],
+                    details: parts[5],
+                    stream: parts[6] || ""
+                };
 
                 scheduleData.push(entry);
             });
 
             bulkText.value = '';
-            renderTable();
+            renderTable(activeTab);
         }
 
         function saveCSV() {
-            const rows = Array.from(tableBody.querySelectorAll('tr')).map(tr => {
-                return Array.from(tr.querySelectorAll('td')).slice(0, -1).map(td => td.textContent);
-            });
-            const csvContent = ["Tab,Prepare,Starttime,Nr.,Competition,Entries,Details,Stream", ...rows.map(r => r.join(','))].join('\n');
+            const csvContent = [
+                "Tab,Prepare,Starttime,Nr.,Competition,Entries,Details,Stream",
+                ...scheduleData.map(row => Object.values(row).join(','))
+            ].join('\n');
 
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
