@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cockpit Rundown</title>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .header {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 0.9em;
+            opacity: 0.7;
+        }
+
+        .tabs {
+            background-color: #444;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tabs button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .tabs button.active {
+            background-color: #888;
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .left, .right {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .left {
+            border-right: 2px solid #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        tr.blink-red {
+            background-color: red;
+            animation: blink 1s infinite;
+        }
+
+        tr.blink-green {
+            background-color: green;
+            color: white;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .expanded {
+            display: none;
+        }
+
+        .expanded.visible {
+            display: table-row;
+        }
+
+        .player-container {
+            width: 100%;
+            height: calc(100% - 40px);
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <h1>Cockpit Rundown</h1>
+            <h2>WEC Ocala</h2>
+        </div>
+        <div id="clock"></div>
+    </div>
+
+    <div class="tabs" id="tabs-container"></div>
+
+    <div class="content">
+        <div class="left">
+            <table id="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Prepare</th>
+                        <th>Starttime</th>
+                        <th>Nr.</th>
+                        <th>Competition</th>
+                        <th>Entries</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="right">
+            <div class="player-container">
+                <video id="hls-player" controls></video>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const clockElement = document.getElementById('clock');
+        const tabsContainer = document.getElementById('tabs-container');
+        const tableBody = document.querySelector('#schedule-table tbody');
+        const hlsPlayer = document.getElementById('hls-player');
+
+        const defaultStream = "https://ingest-fhdlinear.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8";
+
+        let tabs = [];
+        let scheduleData = [];
+
+        function updateClock() {
+            const now = new Date();
+            const options = { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            clockElement.textContent = now.toLocaleTimeString('en-US', options);
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function loadCSV() {
+            fetch('cockpitrundownupload.csv')
+                .then(response => response.text())
+                .then(csvText => {
+                    const rows = csvText.split('\n').map(row => row.split(','));
+                    const [headers, ...data] = rows;
+
+                    tabs = [...new Set(data.map(row => row[0]))];
+                    scheduleData = data.map(row => ({
+                        tab: row[0],
+                        prepare: row[1],
+                        starttime: row[2],
+                        number: row[3],
+                        competition: row[4],
+                        entries: row[5],
+                        details: row[6],
+                        stream: row[7] || defaultStream
+                    }));
+
+                    renderTabs();
+                    renderTable(tabs[0]);
+                });
+        }
+
+        function renderTabs() {
+            tabsContainer.innerHTML = '';
+            tabs.forEach((tab, index) => {
+                const button = document.createElement('button');
+                button.textContent = tab;
+                button.classList.toggle('active', index === 0);
+                button.onclick = () => {
+                    document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    renderTable(tab);
+                };
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        function renderTable(tab) {
+            const filteredData = scheduleData.filter(row => row.tab === tab);
+            tableBody.innerHTML = '';
+            filteredData.sort((a, b) => new Date(a.prepare) - new Date(b.prepare));
+
+            filteredData.forEach(row => {
+                const tr = document.createElement('tr');
+                const expandedRow = document.createElement('tr');
+                expandedRow.className = 'expanded';
+
+                tr.innerHTML = `
+                    <td>${row.prepare}</td>
+                    <td>${row.starttime}</td>
+                    <td>${row.number}</td>
+                    <td>${row.competition}</td>
+                    <td>${row.entries}</td>
+                `;
+
+                expandedRow.innerHTML = `<td colspan="5">${row.details}</td>`;
+
+                tr.onclick = () => expandedRow.classList.toggle('visible');
+
+                tableBody.appendChild(tr);
+                tableBody.appendChild(expandedRow);
+
+                const prepareTime = new Date(row.prepare).getTime();
+                const startTime = new Date(row.starttime).getTime();
+
+                setInterval(() => {
+                    const now = new Date().getTime();
+
+                    if (now >= startTime) {
+                        tr.classList.remove('blink-red');
+                        tr.classList.add('blink-green');
+                    } else if (now >= prepareTime) {
+                        tr.classList.add('blink-red');
+                    }
+                }, 1000);
+            });
+
+            const streamUrl = filteredData[0]?.stream || defaultStream;
+            loadStream(streamUrl);
+        }
+
+        function loadStream(url) {
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(url);
+                hls.attachMedia(hlsPlayer);
+            } else if (hlsPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                hlsPlayer.src = url;
+            }
+        }
+
+        loadCSV();
+    </script>
+</body>
+</html>
