@@ -114,12 +114,12 @@
         }
 
         th:nth-child(3), td:nth-child(3) {
-            width: 5%;
+            width: 15%; /* Adjusted for Nr. */
             text-align: center;
         }
 
         th:nth-child(4), td:nth-child(4) {
-            width: 60%;
+            width: 55%;
         }
 
         th:nth-child(5), td:nth-child(5) {
@@ -227,19 +227,19 @@
             fetch('cockpitrundownupload.csv')
                 .then(response => response.text())
                 .then(csvText => {
-                    const rows = csvText.split('\n').map(row => row.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/)); // Besseres CSV-Splitting
+                    const rows = csvText.split('\n').map(row => row.split(/,(?=(?:[^"]*"[^"]*")*[^"]*$)/));
                     const [headers, ...data] = rows;
 
-                    tabs = [...new Set(data.map(row => row[0]?.trim()))]; // Leere Werte trimmen und ignorieren
+                    tabs = [...new Set(data.map(row => row[0]?.trim()))];
                     scheduleData = data.map(row => ({
-                        tab: row[0]?.trim() || "Default", // Standardwert für leere Felder
+                        tab: row[0]?.trim() || "Default",
                         prepare: row[1]?.trim(),
                         starttime: row[2]?.trim(),
                         number: row[3]?.trim(),
                         competition: row[4]?.trim(),
                         entries: row[5]?.trim(),
                         details: row[6]?.trim(),
-                        stream: row[7]?.trim() || defaultStream // Fallback für den Stream
+                        stream: row[7]?.trim() || defaultStream
                     }));
 
                     renderTabs();
