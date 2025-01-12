@@ -81,8 +81,32 @@
         }
 
         th, td {
-            padding: 10px;
+            padding: 5px;
             text-align: left;
+        }
+
+        th:nth-child(1), td:nth-child(1) {
+            width: 10%;
+            text-align: center;
+        }
+
+        th:nth-child(2), td:nth-child(2) {
+            width: 10%;
+            text-align: center;
+        }
+
+        th:nth-child(3), td:nth-child(3) {
+            width: 5%;
+            text-align: center;
+        }
+
+        th:nth-child(4), td:nth-child(4) {
+            width: 60%;
+        }
+
+        th:nth-child(5), td:nth-child(5) {
+            width: 10%;
+            text-align: center;
         }
 
         tr.blink-red {
@@ -93,6 +117,10 @@
         tr.blink-green {
             background-color: green;
             color: white;
+        }
+
+        tr.completed {
+            background-color: lightgray;
         }
 
         @keyframes blink {
@@ -183,8 +211,8 @@
                     tabs = [...new Set(data.map(row => row[0]))];
                     scheduleData = data.map(row => ({
                         tab: row[0],
-                        prepare: row[1],
-                        starttime: row[2],
+                        prepare: formatTime(row[1]),
+                        starttime: formatTime(row[2]),
                         number: row[3],
                         competition: row[4],
                         entries: row[5],
@@ -195,6 +223,11 @@
                     renderTabs();
                     renderTable(tabs[0]);
                 });
+        }
+
+        function formatTime(timeString) {
+            const date = new Date(timeString);
+            return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
         }
 
         function renderTabs() {
@@ -217,7 +250,7 @@
             tableBody.innerHTML = '';
             filteredData.sort((a, b) => new Date(a.prepare) - new Date(b.prepare));
 
-            filteredData.forEach(row => {
+            filteredData.forEach((row, index) => {
                 const tr = document.createElement('tr');
                 const expandedRow = document.createElement('tr');
                 expandedRow.className = 'expanded';
@@ -239,13 +272,16 @@
 
                 const prepareTime = new Date(row.prepare).getTime();
                 const startTime = new Date(row.starttime).getTime();
+                const nextRowStartTime = index < filteredData.length - 1 ? new Date(filteredData[index + 1].starttime).getTime() : Infinity;
 
                 setInterval(() => {
                     const now = new Date().getTime();
 
-                    if (now >= startTime) {
+                    if (now >= startTime && now < nextRowStartTime) {
                         tr.classList.remove('blink-red');
                         tr.classList.add('blink-green');
+                    } else if (now >= nextRowStartTime) {
+                        tr.classList.add('completed');
                     } else if (now >= prepareTime) {
                         tr.classList.add('blink-red');
                     }
@@ -257,35 +293,16 @@
         }
 
         function loadStream(url) {
-            const proxiedUrl = `https://cors-anywhere.herokuapp.com/${url}`; // Add CORS proxy
             if (Hls.isSupported()) {
                 const hls = new Hls();
-                hls.loadSource(proxiedUrl);
+                hls.loadSource(url);
                 hls.attachMedia(hlsPlayer);
 
-                // Fehler-Handling hinzufügen
                 hls.on(Hls.Events.ERROR, (event, data) => {
-                    if (data.fatal) {
-                        switch (data.type) {
-                            case Hls.ErrorTypes.NETWORK_ERROR:
-                                console.error("HLS.js Network Error:", data);
-                                break;
-                            case Hls.ErrorTypes.MEDIA_ERROR:
-                                console.error("HLS.js Media Error:", data);
-                                hls.recoverMediaError();
-                                break;
-                            default:
-                                console.error("HLS.js Fatal Error:", data);
-                                hls.destroy();
-                                break;
-                        }
-                    }
+                    console.error("HLS.js Error:", data);
                 });
-
-                console.log("HLS.js stream loaded:", proxiedUrl);
             } else if (hlsPlayer.canPlayType('application/vnd.apple.mpegurl')) {
-                hlsPlayer.src = proxiedUrl;
-                console.log("Native HLS support detected, stream loaded:", proxiedUrl);
+                hlsPlayer.src = url;
             } else {
                 console.error("HLS.js is not supported in this browser.");
             }
