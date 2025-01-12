@@ -19,35 +19,28 @@
             color: white;
             padding: 10px 20px;
             display: flex;
-            justify-content: center;
             align-items: center;
-            position: relative;
+            justify-content: space-between;
+        }
+
+        .header-title {
+            text-align: center;
+            flex-grow: 1;
         }
 
         .header h1 {
             margin: 0;
             font-size: 2.5em;
-            text-align: center;
         }
 
         .header h2 {
             margin: 0;
             font-size: 1.2em;
             opacity: 0.9;
-            text-align: center;
         }
 
         .clock {
-            position: absolute;
             font-size: 1.5em;
-        }
-
-        .clock.left {
-            left: 20px;
-        }
-
-        .clock.right {
-            right: 20px;
         }
 
         .tabs {
@@ -166,12 +159,12 @@
 </head>
 <body>
     <div class="header">
-        <div class="clock left" id="clock-left"></div>
-        <div>
+        <div class="clock" id="clock-left"></div>
+        <div class="header-title">
             <h1>Cockpit Rundown</h1>
             <h2>WEC Ocala</h2>
         </div>
-        <div class="clock right" id="clock-right"></div>
+        <div class="clock" id="clock-right"></div>
     </div>
 
     <div class="tabs" id="tabs-container"></div>
