@@ -63,6 +63,15 @@
             background-color: #FF6347; /* Tomato */
         }
 
+        .tabs button.blink-red {
+            animation: blink 1s infinite;
+            background-color: red;
+        }
+
+        .tabs button.blink-green {
+            background-color: green;
+        }
+
         .content {
             display: flex;
             flex: 1;
@@ -186,7 +195,7 @@
         </div>
         <div class="right">
             <div class="player-container">
-                <video id="hls-player" controls></video>
+                <video id="hls-player" controls autoplay muted></video>
             </div>
         </div>
     </div>
@@ -224,8 +233,8 @@
                     tabs = [...new Set(data.map(row => row[0]))];
                     scheduleData = data.map(row => ({
                         tab: row[0],
-                        prepare: formatTime(row[1]),
-                        starttime: formatTime(row[2]),
+                        prepare: row[1],
+                        starttime: row[2],
                         number: row[3],
                         competition: row[4],
                         entries: row[5],
@@ -238,16 +247,12 @@
                 });
         }
 
-        function formatTime(timeString) {
-            const date = new Date(timeString);
-            return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-        }
-
         function renderTabs() {
             tabsContainer.innerHTML = '';
             tabs.forEach((tab, index) => {
                 const button = document.createElement('button');
                 button.textContent = tab;
+                button.classList.add('tab-button');
                 button.classList.toggle('active', index === 0);
                 button.onclick = () => {
                     document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
@@ -261,6 +266,11 @@
         function renderTable(tab) {
             const filteredData = scheduleData.filter(row => row.tab === tab);
             tableBody.innerHTML = '';
+            const tabButton = document.querySelector(`.tabs button:nth-child(${tabs.indexOf(tab) + 1})`);
+
+            let hasBlinkRed = false;
+            let hasGreen = false;
+
             filteredData.sort((a, b) => new Date(a.prepare) - new Date(b.prepare));
 
             filteredData.forEach((row, index) => {
@@ -269,8 +279,8 @@
                 expandedRow.className = 'expanded';
 
                 tr.innerHTML = `
-                    <td>${row.prepare}</td>
-                    <td>${row.starttime}</td>
+                    <td>${formatTime(row.prepare)}</td>
+                    <td>${formatTime(row.starttime)}</td>
                     <td>${row.number}</td>
                     <td>${row.competition}</td>
                     <td>${row.entries}</td>
@@ -293,39 +303,15 @@
                     if (now >= startTime && now < nextRowStartTime) {
                         tr.classList.remove('blink-red');
                         tr.classList.add('blink-green');
-                    } else if (now >= nextRowStartTime) {
-                        tr.classList.add('completed');
-                    } else if (now >= prepareTime) {
+                        hasGreen = true;
+                    } else if (now >= prepareTime && now < startTime) {
                         tr.classList.add('blink-red');
+                        hasBlinkRed = true;
+                    } else {
+                        tr.classList.remove('blink-green', 'blink-red');
                     }
-                }, 1000);
-            });
 
-            const streamUrl = filteredData[0]?.stream || defaultStream;
-            loadStream(streamUrl);
-        }
-
-        function loadStream(url) {
-            if (Hls.isSupported()) {
-                const hls = new Hls({
-                    maxBufferSize: 30 * 1000 * 1000, // 30 MB
-                    maxBufferLength: 30,            // 30 seconds
-                    liveSyncDurationCount: 3        // Minimized latency
-                });
-                hls.loadSource(url);
-                hls.attachMedia(hlsPlayer);
-
-                hls.on(Hls.Events.ERROR, (event, data) => {
-                    console.error("HLS.js Error:", data);
-                });
-            } else if (hlsPlayer.canPlayType('application/vnd.apple.mpegurl')) {
-                hlsPlayer.src = url;
-            } else {
-                console.error("HLS.js is not supported in this browser.");
-            }
-        }
-
-        loadCSV();
-    </script>
-</body>
-</html>
+                    if (hasBlinkRed) {
+                        tabButton.classList.add('blink-red');
+                        tabButton.classList.remove('blink-green');
+                    } else if
