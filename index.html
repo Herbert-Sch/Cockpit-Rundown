@@ -294,12 +294,12 @@
                 tableBody.appendChild(tr);
                 tableBody.appendChild(expandedRow);
 
-                const prepareTime = new Date(row.prepare).getTime();
-                const startTime = new Date(row.starttime).getTime();
-                const nextRowStartTime = index < filteredData.length - 1 ? new Date(filteredData[index + 1].starttime).getTime() : Infinity;
+                const prepareTime = convertToTimezone(new Date(row.prepare).getTime(), -5);
+                const startTime = convertToTimezone(new Date(row.starttime).getTime(), -5);
+                const nextRowStartTime = index < filteredData.length - 1 ? convertToTimezone(new Date(filteredData[index + 1].starttime).getTime(), -5) : Infinity;
 
                 setInterval(() => {
-                    const now = new Date().getTime();
+                    const now = convertToTimezone(Date.now(), -5);
 
                     if (now >= startTime && now < nextRowStartTime) {
                         tr.classList.remove('blink-red');
@@ -331,6 +331,11 @@
         function formatTime(timeString) {
             const date = new Date(timeString);
             return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function convertToTimezone(timestamp, offset) {
+            const utc = timestamp - new Date().getTimezoneOffset() * 60000;
+            return utc + offset * 3600000;
         }
 
         function loadStream(url) {
