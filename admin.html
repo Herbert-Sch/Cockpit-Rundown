@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rundown Admin</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        .header {
+            background-color: #8B0000; /* Dark Red */
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .header-title {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+
+        .header h2 {
+            margin: 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .clock {
+            font-size: 1.5em;
+        }
+
+        .tabs-container {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tabs {
+            background-color: #B22222; /* Lighter Red */
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+        }
+
+        .tabs button {
+            background-color: #DC143C; /* Crimson */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .tabs button.active {
+            background-color: #FF6347; /* Tomato */
+        }
+
+        .tabs-edit {
+            display: flex;
+            gap: 5px;
+            margin-bottom: 10px;
+        }
+
+        .tabs-edit input {
+            flex: 1;
+            padding: 5px;
+            font-size: 1em;
+        }
+
+        .content {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .left, .right {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .left {
+            border-right: 2px solid #ccc;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+
+        td[contenteditable] {
+            background-color: #f9f9f9;
+            cursor: text;
+        }
+
+        .delete-row {
+            color: red;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button.save, button.add {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        button.save:hover, button.add:hover {
+            background-color: #218838;
+        }
+
+        button.save:active, button.add:active {
+            background-color: #1e7e34;
+        }
+
+        .player-container {
+            width: 100%;
+            height: calc(100% - 40px);
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="clock" id="clock-left"></div>
+        <div class="header-title">
+            <h1>Rundown Admin</h1>
+            <h2>WEC Ocala</h2>
+        </div>
+        <div class="clock" id="clock-right"></div>
+    </div>
+
+    <div class="tabs-container">
+        <div class="tabs-edit">
+            <input type="text" id="new-tab-name" placeholder="Enter new tab name">
+            <button onclick="addTab()">Add Tab</button>
+        </div>
+        <div class="tabs" id="tabs-container"></div>
+    </div>
+
+    <div class="content">
+        <div class="left">
+            <table id="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Tab</th>
+                        <th>Prepare</th>
+                        <th>Starttime</th>
+                        <th>Nr.</th>
+                        <th>Competition</th>
+                        <th>Entries</th>
+                        <th>Details</th>
+                        <th>Stream</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <button class="save" onclick="saveCSV()">Save Changes</button>
+        </div>
+        <div class="right">
+            <textarea id="bulk-text" placeholder="Enter multiple entries here..."></textarea>
+            <button class="add" onclick="addEntries()">Add Entries</button>
+        </div>
+    </div>
+
+    <script>
+        const clockLeft = document.getElementById('clock-left');
+        const clockRight = document.getElementById('clock-right');
+        const tabsContainer = document.getElementById('tabs-container');
+        const tableBody = document.querySelector('#schedule-table tbody');
+        const bulkText = document.getElementById('bulk-text');
+        const newTabName = document.getElementById('new-tab-name');
+
+        let tabs = [];
+        let scheduleData = [];
+
+        function updateClock() {
+            const now = new Date();
+            const options = { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const timeString = now.toLocaleTimeString('en-US', options);
+            clockLeft.textContent = timeString;
+            clockRight.textContent = timeString;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+
+        function loadCSV() {
+            fetch('cockpitrundownupload.csv')
+                .then(response => response.text())
+                .then(csvText => {
+                    const rows = csvText.split('\n').map(row => row.split(','));
+                    const [headers, ...data] = rows;
+
+                    tabs = [...new Set(data.map(row => row[0]))];
+                    scheduleData = data;
+
+                    renderTabs();
+                    renderTable();
+                });
+        }
+
+        function renderTabs() {
+            tabsContainer.innerHTML = '';
+            tabs.forEach((tab, index) => {
+                const button = document.createElement('button');
+                button.textContent = tab;
+                button.classList.add('tab-button');
+                button.classList.toggle('active', index === 0);
+                button.onclick = () => {
+                    document.querySelectorAll('.tabs button').forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    renderTable();
+                };
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        function addTab() {
+            const name = newTabName.value.trim();
+            if (name && !tabs.includes(name)) {
+                tabs.push(name);
+                renderTabs();
+                newTabName.value = '';
+            }
+        }
+
+        function renderTable() {
+            tableBody.innerHTML = '';
+            scheduleData.forEach((row, index) => {
+                const tr = document.createElement('tr');
+                row.forEach((cell, index) => {
+                    const td = document.createElement('td');
+                    td.textContent = cell;
+                    td.contentEditable = true;
+                    tr.appendChild(td);
+                });
+                const actionTd = document.createElement('td');
+                actionTd.innerHTML = '<span class="delete-row" onclick="deleteRow(' + index + ')">X</span>';
+                tr.appendChild(actionTd);
+                tableBody.appendChild(tr);
+            });
+        }
+
+        function deleteRow(index) {
+            scheduleData.splice(index, 1);
+            renderTable();
+        }
+
+        function addEntries() {
+            const lines = bulkText.value.trim().split('\n');
+            const activeTab = document.querySelector('.tabs button.active').textContent;
+
+            lines.forEach(line => {
+                const parts = line.split(/\s+/);
+                const time = parts.slice(0, 2).join(' ');
+                const rest = parts.slice(2).join(' ').split(' ');
+
+                const entry = [
+                    activeTab,
+                    time,
+                    time,
+                    rest[0], // Nr.
+                    rest.slice(1, -3).join(' '), // Competition
+                    rest[rest.length - 3], // Entries
+                    rest.slice(-2).join(' '), // Details
+                    '' // Stream (default empty)
+                ];
+
+                scheduleData.push(entry);
+            });
+
+            bulkText.value = '';
+            renderTable();
+        }
+
+        function saveCSV() {
+            const rows = Array.from(tableBody.querySelectorAll('tr')).map(tr => {
+                return Array.from(tr.querySelectorAll('td')).slice(0, -1).map(td => td.textContent);
+            });
+            const csvContent = ["Tab,Prepare,Starttime,Nr.,Competition,Entries,Details,Stream", ...rows.map(r => r.join(','))].join('\n');
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'edited_cockpitrundown.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        loadCSV();
+    </script>
+</body>
+</html>
