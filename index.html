@@ -195,7 +195,7 @@
         </div>
         <div class="right">
             <div class="player-container">
-                <video id="hls-player" controls autoplay muted></video>
+                <video id="hls-player" autoplay muted controls></video>
             </div>
         </div>
     </div>
@@ -322,11 +322,30 @@
                     }
                 }, 1000);
             });
+
+            const streamUrl = filteredData[0]?.stream || defaultStream;
+            loadStream(streamUrl);
         }
 
         function formatTime(timeString) {
             const date = new Date(timeString);
             return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        function loadStream(url) {
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(url);
+                hls.attachMedia(hlsPlayer);
+
+                hls.on(Hls.Events.ERROR, (event, data) => {
+                    console.error("HLS.js Error:", data);
+                });
+            } else if (hlsPlayer.canPlayType('application/vnd.apple.mpegurl')) {
+                hlsPlayer.src = url;
+            } else {
+                console.error("HLS.js is not supported in this browser.");
+            }
         }
 
         loadCSV();
