@@ -314,4 +314,22 @@
                     if (hasBlinkRed) {
                         tabButton.classList.add('blink-red');
                         tabButton.classList.remove('blink-green');
-                    } else if
+                    } else if (hasGreen) {
+                        tabButton.classList.add('blink-green');
+                        tabButton.classList.remove('blink-red');
+                    } else {
+                        tabButton.classList.remove('blink-red', 'blink-green');
+                    }
+                }, 1000);
+            });
+        }
+
+        function formatTime(timeString) {
+            const date = new Date(timeString);
+            return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
+        }
+
+        loadCSV();
+    </script>
+</body>
+</html>
