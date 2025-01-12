@@ -159,7 +159,7 @@
         const tableBody = document.querySelector('#schedule-table tbody');
         const hlsPlayer = document.getElementById('hls-player');
 
-        const defaultStream = "https://ingest-fhdlinear.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8";
+        const defaultStream = "https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8";
 
         let tabs = [];
         let scheduleData = [];
@@ -257,9 +257,10 @@
         }
 
         function loadStream(url) {
+            const proxiedUrl = `https://cors-anywhere.herokuapp.com/${url}`; // Add CORS proxy
             if (Hls.isSupported()) {
                 const hls = new Hls();
-                hls.loadSource(url);
+                hls.loadSource(proxiedUrl);
                 hls.attachMedia(hlsPlayer);
 
                 // Fehler-Handling hinzufügen
@@ -281,10 +282,10 @@
                     }
                 });
 
-                console.log("HLS.js stream loaded:", url);
+                console.log("HLS.js stream loaded:", proxiedUrl);
             } else if (hlsPlayer.canPlayType('application/vnd.apple.mpegurl')) {
-                hlsPlayer.src = url;
-                console.log("Native HLS support detected, stream loaded:", url);
+                hlsPlayer.src = proxiedUrl;
+                console.log("Native HLS support detected, stream loaded:", proxiedUrl);
             } else {
                 console.error("HLS.js is not supported in this browser.");
             }

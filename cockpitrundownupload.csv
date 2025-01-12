@@ -1,5 +1,5 @@
 Tab,Prepare,Starttime,Nr.,Competition,Entries,Details,Stream
-Tab1,2025-01-12T10:30:00,2025-01-12T11:00:00,1,Competition A,10,Details about Competition A,https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Tab1,2025-01-12T11:30:00,2025-01-12T12:00:00,2,Competition B,15,Details about Competition B,https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Tab2,2025-01-12T09:00:00,2025-01-12T09:30:00,3,Competition C,20,Details about Competition C,https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Tab2,2025-01-12T10:00:00,2025-01-12T10:30:00,4,Competition D,25,Details about Competition D,https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Grand Arena,2025-01-12T10:30:00,2025-01-12T11:00:00,1,Competition A,10,Details about Competition A,https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Grand Arena,2025-01-12T11:30:00,2025-01-12T12:00:00,2,Competition B,15,Details about Competition B,https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Statium,2025-01-12T09:00:00,2025-01-12T09:30:00,3,Competition C,20,Details about Competition C,https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,2025-01-12T10:00:00,2025-01-12T10:30:00,4,Competition D,25,Details about Competition D,https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
