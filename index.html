@@ -15,34 +15,50 @@
         }
 
         .header {
-            background-color: #333;
+            background-color: #8B0000; /* Dark Red */
             color: white;
             padding: 10px 20px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
+            position: relative;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 2em;
+            font-size: 2.5em;
+            text-align: center;
         }
 
         .header h2 {
             margin: 0;
-            font-size: 0.9em;
-            opacity: 0.7;
+            font-size: 1.2em;
+            opacity: 0.9;
+            text-align: center;
+        }
+
+        .clock {
+            position: absolute;
+            font-size: 1.5em;
+        }
+
+        .clock.left {
+            left: 20px;
+        }
+
+        .clock.right {
+            right: 20px;
         }
 
         .tabs {
-            background-color: #444;
+            background-color: #B22222; /* Lighter Red */
             padding: 10px;
             display: flex;
             gap: 10px;
         }
 
         .tabs button {
-            background-color: #555;
+            background-color: #DC143C; /* Crimson */
             color: white;
             border: none;
             padding: 10px 20px;
@@ -51,7 +67,7 @@
         }
 
         .tabs button.active {
-            background-color: #888;
+            background-color: #FF6347; /* Tomato */
         }
 
         .content {
@@ -150,11 +166,12 @@
 </head>
 <body>
     <div class="header">
+        <div class="clock left" id="clock-left"></div>
         <div>
             <h1>Cockpit Rundown</h1>
             <h2>WEC Ocala</h2>
         </div>
-        <div id="clock"></div>
+        <div class="clock right" id="clock-right"></div>
     </div>
 
     <div class="tabs" id="tabs-container"></div>
@@ -182,7 +199,8 @@
     </div>
 
     <script>
-        const clockElement = document.getElementById('clock');
+        const clockLeft = document.getElementById('clock-left');
+        const clockRight = document.getElementById('clock-right');
         const tabsContainer = document.getElementById('tabs-container');
         const tableBody = document.querySelector('#schedule-table tbody');
         const hlsPlayer = document.getElementById('hls-player');
@@ -195,7 +213,9 @@
         function updateClock() {
             const now = new Date();
             const options = { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' };
-            clockElement.textContent = now.toLocaleTimeString('en-US', options);
+            const timeString = now.toLocaleTimeString('en-US', options);
+            clockLeft.textContent = timeString;
+            clockRight.textContent = timeString;
         }
 
         setInterval(updateClock, 1000);
@@ -294,7 +314,11 @@
 
         function loadStream(url) {
             if (Hls.isSupported()) {
-                const hls = new Hls();
+                const hls = new Hls({
+                    maxBufferSize: 30 * 1000 * 1000, // 30 MB
+                    maxBufferLength: 30,            // 30 seconds
+                    liveSyncDurationCount: 3        // Minimized latency
+                });
                 hls.loadSource(url);
                 hls.attachMedia(hlsPlayer);
 
