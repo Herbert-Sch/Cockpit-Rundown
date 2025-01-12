@@ -301,9 +301,12 @@
                 setInterval(() => {
                     const now = convertToTimezone(Date.now(), -5);
 
-                    if (row.number === 'END') {
-                        tr.classList.remove('blink-green', 'blink-red');
-                    } else if (now >= startTime && now < nextRowStartTime) {
+                    if (row.competition === "END" || now < prepareTime || now > nextRowStartTime) {
+                        tr.classList.remove('blink-red', 'blink-green');
+                        return;
+                    }
+
+                    if (now >= startTime && now < nextRowStartTime) {
                         tr.classList.remove('blink-red');
                         tr.classList.add('blink-green');
                         hasGreen = true;
