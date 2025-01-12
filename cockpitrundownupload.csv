@@ -1,50 +1,50 @@
-Tab;Prepare;Starttime;Nr.;Competition;Entries;Details;Stream
-WEC Grand Arena;1900-01-01 07:30:00;8:00 am;853;$5000 NAL 1.35m Jr/Am Classic II.2b;31;;https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena;1900-01-01 09:45:00;10:15 am;855;Ring Maintenance;13;;https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena;1900-01-01 12:00:00;12:30 pm;805;$40,000 WEC Grand Prix II.2a American Standard;25;;https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena;1900-01-01 13:45:00;2:15 pm;857;$15,000 1.45m Jumper Classic II.2b;14;;https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Stadium;1900-01-01 08:30:00;9:00 am;816;$3000 1.15m Junior/Amateur Classic II.2b;28;;https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Stadium;1900-01-01 10:45:00;11:15 am;851;Ring Maintenance;19;;https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Stadium;1900-01-01 12:30:00;1:00 pm;8511;$5000 NAL 1.25m Junior Classic II.2b;34;;https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1;1900-01-01 07:30:00;8:00 am;815;$5000 NAL/WIHS Amateur Classic II.2b;35;;https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1;1900-01-01 10:00:00;10:30 am;813;Ring Maintenance;11;;https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1;1900-01-01 11:15:00;11:45 am;528;$2500 1.10m NAL/WIHS Junior Classic II.2b;14;;https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1;1900-01-01 12:30:00;1:00 pm;533;"USEF Hunter Seat Medal 3'6""";10;;https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1;1900-01-01 13:30:00;2:00 pm;549;Ring Maintenance;13;;https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2;1900-01-01 08:30:00;9:00 am;812;$2500 1.10m NAL/WIHS Amateur Classic II.2b;29;;https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2;1900-01-01 10:30:00;11:00 am;811;Ring Maintenance;20;;https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2;1900-01-01 12:00:00;12:30 pm;810;$500 Novice Amateur Classic .95 II.2b;20;;https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2;1900-01-01 12:00:00;12:30 pm;809;$500 Novice Junior Classic .95 II.2b;10;;https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-North 4;1900-01-01 08:30:00;9:00 am;817;$500 .65m Junior/Amateur Classic;9;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-North 4;1900-01-01 09:30:00;10:00 am;818;$500 .70m Junior/Amateur Classic;5;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-North 4;1900-01-01 10:30:00;11:00 am;819;$500 .80m Junior/Amateur Classic;11;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-North 4;1900-01-01 12:00:00;12:30 pm;820;$500 .85m Junior/Amateur Classic;16;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 07:30:00;8:00 am;82;"$700 AO Hunter 3'6""";7;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 07:30:00;8:00 am;83;"$700 AO Hunter 3'6"" -Handy";7;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 07:30:00;8:00 am;416;"$3500 Amateur Owner Hunter Classic 3'6""";6;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 08:30:00;9:00 am;97;"$500 AO Hunter 3'3"" 36+";6;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 08:30:00;9:00 am;98;"$500 AO Hunter 3'3"" 36+-Handy";6;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 09:45:00;10:15 am;92;Ring Maintenance;20;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 09:45:00;10:15 am;93;"$500 AO Hunter 3'3"" 18-35 Years";20;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 09:45:00;10:15 am;415;"$500 AO Hunter 3'3"" 18-35 Years-Handy";21;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 12:45:00;1:15 pm;102;"$2500 Amateur Owner Hunter Classic 3'3""";5;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 12:45:00;1:15 pm;103;"$700 Junior Hunter 3'6"" Small";5;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 13:45:00;2:15 pm;117;"$700 Junior Hunter 3'6"" Small -Handy";6;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 1;1900-01-01 07:30:00;8:00 am;545;Ring Maintenance;17;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 07:30:00;8:00 am;164;"$700 Junior Hunter 3'6"" Large 16-17";6;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 08:30:00;9:00 am;184;"$300 Green Pony Hunter - Lg 2'9""";16;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 08:30:00;9:00 am;185;"$300 Green Pony Hunter - Lg 2'9""";16;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 11:30:00;12:00 pm;158;"$425 Pony Hunter - Lg 2'9""";9;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 11:30:00;12:00 pm;159;"$425 Pony Hunter - Lg 2'9""-Handy";9;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 12:45:00;1:15 pm;178;"$300 Green Pony Hunter - Med - 2'6""";14;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 12:45:00;1:15 pm;179;"$300 Green Pony Hunter - Med - 2'6""";13;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 15:15:00;3:45 pm;152;"$425 Pony Hunter - Medium 2'6""";3;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 15:15:00;3:45 pm;153;"$425 Pony Hunter - Med 2'6""-Handy";3;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 15:45:00;4:15 pm;172;"$300 Green Pony Hunter - Sm 2'3""";8;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 15:45:00;4:15 pm;173;"$300 Green Pony Hunter - Sm 2'3""";8;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 2;1900-01-01 07:30:00;8:00 am;534;"$425 Pony Hunter - Sm 2'3""";18;;https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 4;1900-01-01 08:45:00;9:15 am;232;"$425 Pony Hunter - Sm 2'3""-Handy";18;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 4;1900-01-01 08:45:00;9:15 am;227;$1500 NAL/WIHS Adult Hunter Classic 36+ 3';7;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 4;1900-01-01 12:15:00;12:45 pm;122;$300 Adult Hunter 50+ 3';11;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 4;1900-01-01 12:15:00;12:45 pm;123;$300 Adult Hunter 36-49 3';11;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Indoor 4;1900-01-01 12:15:00;12:45 pm;414;"$500 Junior Hunter 3'3""";9;;https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Tab,Prepare,Starttime,Nr.,Competition,Entries,Details,Stream
+WEC Grand Arena,1900-01-01 07:30:00,8:00 am,853,$5000 NAL 1.35m Jr/Am Classic II.2b,31,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,1900-01-01 09:45:00,10:15 am,855,Ring Maintenance,13,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,1900-01-01 12:00:00,12:30 pm,805,"$40,000 WEC Grand Prix II.2a American Standard",25,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,1900-01-01 13:45:00,2:15 pm,857,"$15,000 1.45m Jumper Classic II.2b",14,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,1900-01-01 08:30:00,9:00 am,816,$3000 1.15m Junior/Amateur Classic II.2b,28,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,1900-01-01 10:45:00,11:15 am,851,Ring Maintenance,19,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,1900-01-01 12:30:00,1:00 pm,8511,$5000 NAL 1.25m Junior Classic II.2b,34,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,1900-01-01 07:30:00,8:00 am,815,$5000 NAL/WIHS Amateur Classic II.2b,35,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,1900-01-01 10:00:00,10:30 am,813,Ring Maintenance,11,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,1900-01-01 11:15:00,11:45 am,528,$2500 1.10m NAL/WIHS Junior Classic II.2b,14,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,1900-01-01 12:30:00,1:00 pm,533,"USEF Hunter Seat Medal 3'6""",10,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,1900-01-01 13:30:00,2:00 pm,549,Ring Maintenance,13,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,1900-01-01 08:30:00,9:00 am,812,$2500 1.10m NAL/WIHS Amateur Classic II.2b,29,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,1900-01-01 10:30:00,11:00 am,811,Ring Maintenance,20,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,1900-01-01 12:00:00,12:30 pm,810,$500 Novice Amateur Classic .95 II.2b,20,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,1900-01-01 12:00:00,12:30 pm,809,$500 Novice Junior Classic .95 II.2b,10,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+North 4,1900-01-01 08:30:00,9:00 am,817,$500 .65m Junior/Amateur Classic,9,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+North 4,1900-01-01 09:30:00,10:00 am,818,$500 .70m Junior/Amateur Classic,5,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+North 4,1900-01-01 10:30:00,11:00 am,819,$500 .80m Junior/Amateur Classic,11,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+North 4,1900-01-01 12:00:00,12:30 pm,820,$500 .85m Junior/Amateur Classic,16,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 07:30:00,8:00 am,82,"$700 AO Hunter 3'6""",7,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 07:30:00,8:00 am,83,"$700 AO Hunter 3'6"" -Handy",7,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 07:30:00,8:00 am,416,"$3500 Amateur Owner Hunter Classic 3'6""",6,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 08:30:00,9:00 am,97,"$500 AO Hunter 3'3"" 36+",6,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 08:30:00,9:00 am,98,"$500 AO Hunter 3'3"" 36+-Handy",6,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 09:45:00,10:15 am,92,Ring Maintenance,20,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 09:45:00,10:15 am,93,"$500 AO Hunter 3'3"" 18-35 Years",20,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 09:45:00,10:15 am,415,"$500 AO Hunter 3'3"" 18-35 Years-Handy",21,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 12:45:00,1:15 pm,102,"$2500 Amateur Owner Hunter Classic 3'3""",5,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 12:45:00,1:15 pm,103,"$700 Junior Hunter 3'6"" Small",5,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 13:45:00,2:15 pm,117,"$700 Junior Hunter 3'6"" Small -Handy",6,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 1,1900-01-01 07:30:00,8:00 am,545,Ring Maintenance,17,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 07:30:00,8:00 am,164,"$700 Junior Hunter 3'6"" Large 16-17",6,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 08:30:00,9:00 am,184,"$300 Green Pony Hunter - Lg 2'9""",16,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 08:30:00,9:00 am,185,"$300 Green Pony Hunter - Lg 2'9""",16,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 11:30:00,12:00 pm,158,"$425 Pony Hunter - Lg 2'9""",9,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 11:30:00,12:00 pm,159,"$425 Pony Hunter - Lg 2'9""-Handy",9,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 12:45:00,1:15 pm,178,"$300 Green Pony Hunter - Med - 2'6""",14,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 12:45:00,1:15 pm,179,"$300 Green Pony Hunter - Med - 2'6""",13,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 15:15:00,3:45 pm,152,"$425 Pony Hunter - Medium 2'6""",3,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 15:15:00,3:45 pm,153,"$425 Pony Hunter - Med 2'6""-Handy",3,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 15:45:00,4:15 pm,172,"$300 Green Pony Hunter - Sm 2'3""",8,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 15:45:00,4:15 pm,173,"$300 Green Pony Hunter - Sm 2'3""",8,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 2,1900-01-01 07:30:00,8:00 am,534,"$425 Pony Hunter - Sm 2'3""",18,,https://ingest-fhdb82ec.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 4,1900-01-01 08:45:00,9:15 am,232,"$425 Pony Hunter - Sm 2'3""-Handy",18,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 4,1900-01-01 08:45:00,9:15 am,227,$1500 NAL/WIHS Adult Hunter Classic 36+ 3',7,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 4,1900-01-01 12:15:00,12:45 pm,122,$300 Adult Hunter 50+ 3',11,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 4,1900-01-01 12:15:00,12:45 pm,123,$300 Adult Hunter 36-49 3',11,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Indoor 4,1900-01-01 12:15:00,12:45 pm,414,"$500 Junior Hunter 3'3""",9,,https://ingest-XXXX.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
