@@ -312,6 +312,11 @@
                         tr.classList.remove('blink-green', 'blink-red');
                     }
 
+                    // Ensure the last entry doesn't stay green after its time window ends
+                    if (index === filteredData.length - 1 && now >= nextRowStartTime) {
+                        tr.classList.remove('blink-green', 'blink-red');
+                    }
+
                     if (hasBlinkRed) {
                         tabButton.classList.add('blink-red');
                         tabButton.classList.remove('blink-green');
