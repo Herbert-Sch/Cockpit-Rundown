@@ -63,19 +63,11 @@
             background-color: #FF6347; /* Tomato */
         }
 
-        .tabs button.blink-red {
-            animation: blink 1s infinite;
-            background-color: red;
-        }
-
-        .tabs button.blink-green {
-            background-color: green;
-        }
-
         .content {
             display: flex;
             flex: 1;
             overflow: hidden;
+            position: relative;
         }
 
         .left, .right {
@@ -103,56 +95,25 @@
             text-align: left;
         }
 
-        th:nth-child(1), td:nth-child(1) {
-            width: 10%;
-            text-align: center;
+        .highlight-placeholder {
+            background-color: #fffacd; /* Light Yellow */
         }
 
-        th:nth-child(2), td:nth-child(2) {
-            width: 10%;
-            text-align: center;
-        }
-
-        th:nth-child(3), td:nth-child(3) {
-            width: 15%; /* Adjusted for Nr. */
-            text-align: center;
-        }
-
-        th:nth-child(4), td:nth-child(4) {
-            width: 55%;
-        }
-
-        th:nth-child(5), td:nth-child(5) {
-            width: 10%;
-            text-align: center;
-        }
-
-        tr.blink-red {
-            background-color: red;
-            animation: blink 1s infinite;
-        }
-
-        tr.blink-green {
-            background-color: green;
+        .current-event {
+            background-color: #32CD32; /* Lime Green */
             color: white;
         }
 
-        tr.completed {
-            background-color: lightgray;
+        .upcoming-event {
+            animation: blink-red 1s infinite;
+            background-color: #FF6347; /* Tomato */
+            color: white;
         }
 
-        @keyframes blink {
+        @keyframes blink-red {
             0% { opacity: 1; }
             50% { opacity: 0.5; }
             100% { opacity: 1; }
-        }
-
-        .expanded {
-            display: none;
-        }
-
-        .expanded.visible {
-            display: table-row;
         }
 
         .player-container {
@@ -163,6 +124,25 @@
         video {
             width: 100%;
             height: 100%;
+        }
+
+        .multiviewer-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #FF6347; /* Tomato */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 1em;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .multiviewer-button:hover {
+            background-color: #FF4500; /* OrangeRed */
         }
     </style>
 </head>
@@ -198,6 +178,7 @@
                 <video id="hls-player" autoplay muted controls></video>
             </div>
         </div>
+        <a href="https://ocala-mv.netlify.app/" class="multiviewer-button" target="_blank">Go to Multiviewer</a>
     </div>
 
     <script>
@@ -206,8 +187,6 @@
         const tabsContainer = document.getElementById('tabs-container');
         const tableBody = document.querySelector('#schedule-table tbody');
         const hlsPlayer = document.getElementById('hls-player');
-
-        const defaultStream = "https://ingest-fhdinternational.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8";
 
         let tabs = [];
         let scheduleData = [];
@@ -218,6 +197,8 @@
             const timeString = now.toLocaleTimeString('en-US', options);
             clockLeft.textContent = timeString;
             clockRight.textContent = timeString;
+
+            updateTableStyles(now);
         }
 
         setInterval(updateClock, 1000);
@@ -233,13 +214,13 @@
                     tabs = [...new Set(data.map(row => row[0]?.trim()))];
                     scheduleData = data.map(row => ({
                         tab: row[0]?.trim() || "Default",
-                        prepare: row[1]?.trim(),
-                        starttime: row[2]?.trim(),
+                        prepare: new Date(row[1]?.trim()),
+                        starttime: new Date(row[2]?.trim()),
                         number: row[3]?.trim(),
                         competition: row[4]?.trim(),
                         entries: row[5]?.trim(),
                         details: row[6]?.trim(),
-                        stream: row[7]?.trim() || defaultStream
+                        stream: row[7]?.trim()
                     }));
 
                     renderTabs();
@@ -267,80 +248,47 @@
         function renderTable(tab) {
             const filteredData = scheduleData.filter(row => row.tab === tab);
             tableBody.innerHTML = '';
-            const tabButton = document.querySelector(`.tabs button:nth-child(${tabs.indexOf(tab) + 1})`);
-
-            let hasBlinkRed = false;
-            let hasGreen = false;
-
-            filteredData.sort((a, b) => new Date(a.prepare) - new Date(b.prepare));
 
             filteredData.forEach((row, index) => {
                 const tr = document.createElement('tr');
-                const expandedRow = document.createElement('tr');
-                expandedRow.className = 'expanded';
+                if (row.competition === "Ring Maintenance" || row.competition === "Midway Drag") {
+                    tr.classList.add('highlight-placeholder');
+                }
 
                 tr.innerHTML = `
-                    <td>${formatTime(row.prepare)}</td>
-                    <td>${formatTime(row.starttime)}</td>
-                    <td>${row.number}</td>
-                    <td>${row.competition}</td>
-                    <td>${row.entries}</td>
+                    <td>${row.prepare.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || ''}</td>
+                    <td>${row.starttime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || ''}</td>
+                    <td>${row.number || ''}</td>
+                    <td>${row.competition || ''}</td>
+                    <td>${row.entries || ''}</td>
                 `;
 
-                expandedRow.innerHTML = `<td colspan="5">${row.details}</td>`;
-
-                tr.onclick = () => expandedRow.classList.toggle('visible');
-
                 tableBody.appendChild(tr);
-                tableBody.appendChild(expandedRow);
-
-                const prepareTime = convertToTimezone(new Date(row.prepare).getTime(), -5);
-                const startTime = convertToTimezone(new Date(row.starttime).getTime(), -5);
-                const nextRowStartTime = index < filteredData.length - 1 ? convertToTimezone(new Date(filteredData[index + 1].starttime).getTime(), -5) : Infinity;
-
-                setInterval(() => {
-                    const now = convertToTimezone(Date.now(), -5);
-
-                    if (row.competition === "END" || now < prepareTime || now > nextRowStartTime) {
-                        tr.classList.remove('blink-red', 'blink-green');
-                        return;
-                    }
-
-                    if (now >= startTime && now < nextRowStartTime) {
-                        tr.classList.remove('blink-red');
-                        tr.classList.add('blink-green');
-                        hasGreen = true;
-                    } else if (now >= prepareTime && now < startTime) {
-                        tr.classList.add('blink-red');
-                        hasBlinkRed = true;
-                    } else {
-                        tr.classList.remove('blink-green', 'blink-red');
-                    }
-
-                    if (hasBlinkRed) {
-                        tabButton.classList.add('blink-red');
-                        tabButton.classList.remove('blink-green');
-                    } else if (hasGreen) {
-                        tabButton.classList.add('blink-green');
-                        tabButton.classList.remove('blink-red');
-                    } else {
-                        tabButton.classList.remove('blink-red', 'blink-green');
-                    }
-                }, 1000);
             });
 
-            const streamUrl = filteredData[0]?.stream || defaultStream;
-            loadStream(streamUrl);
+            const streamUrl = filteredData[0]?.stream;
+            if (streamUrl) {
+                loadStream(streamUrl);
+            } else {
+                console.error("No stream URL available for the selected tab.");
+            }
         }
 
-        function formatTime(timeString) {
-            const date = new Date(timeString);
-            return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' });
-        }
+        function updateTableStyles(currentTime) {
+            const rows = Array.from(tableBody.rows);
 
-        function convertToTimezone(timestamp, offset) {
-            const utc = timestamp - new Date().getTimezoneOffset() * 60000;
-            return utc + offset * 3600000;
+            rows.forEach((row, index) => {
+                const prepareTime = scheduleData[index]?.prepare;
+                const startTime = scheduleData[index]?.starttime;
+
+                row.classList.remove('current-event', 'upcoming-event');
+
+                if (currentTime >= startTime && (index === rows.length - 1 || currentTime < scheduleData[index + 1]?.starttime)) {
+                    row.classList.add('current-event');
+                } else if (currentTime >= prepareTime && currentTime < startTime) {
+                    row.classList.add('upcoming-event');
+                }
+            });
         }
 
         function loadStream(url) {
@@ -363,3 +311,4 @@
     </script>
 </body>
 </html>
+
