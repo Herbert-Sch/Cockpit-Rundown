@@ -1,32 +1,33 @@
 Tab,Prepare,Starttime,Nr.,Competition,Entries,Details,Stream
-WEC Grand Arena,2025-01-12T07:30:00,2025-01-12T08:00:00,853,$5000 NAL 1.35m Jr/Am Classic II.2b,31,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena,2025-01-12T09:33:00,2025-01-12T09:33:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T09:33:00,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena,2025-01-12T09:45:00,2025-01-12T10:15:00,855,"$10,000 1.45m Jr/Am Classic II.2b",13,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena,2025-01-12T10:54:00,2025-01-12T10:54:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T10:54:00,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena,2025-01-12T12:00:00,2025-01-12T12:30:00,805,"$40,000 WEC Grand Prix II.2a American Standard",25,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena,2025-01-12T13:45:00,2025-01-12T13:45:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T13:45:00,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena,2025-01-12T13:45:00,2025-01-12T14:15:00,857,"$15,000 1.45m Jumper Classic II.2b",14,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-WEC Grand Arena,2025-01-12T14:57:00,2025-01-12T14:57:00,,END,,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Stadium,2025-01-12T08:30:00,2025-01-12T09:00:00,816,$3000 1.15m Junior/Amateur Classic II.2b,28,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Stadium,2025-01-12T10:24:00,2025-01-12T10:24:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T10:24:00,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Stadium,2025-01-12T10:45:00,2025-01-12T11:15:00,851-1,$5000 NAL 1.25m Junior Classic II.2b,19,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Stadium,2025-01-12T12:12:00,2025-01-12T12:12:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T12:12:00,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Stadium,2025-01-12T12:30:00,2025-01-12T13:00:00,851-2,$5000 NAL 1.25m Amateur Classic II.2b,34,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Stadium,2025-01-12T14:42:00,2025-01-12T14:42:00,,END,,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T07:30:00,2025-01-12T08:00:00,815,$2500 1.10m NAL/WIHS Amateur Classic II.2b,35,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T09:45:00,2025-01-12T09:45:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T09:45:00,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T10:00:00,2025-01-12T10:30:00,813,$2500 1.10m NAL/WIHS Junior Classic II.2b,11,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T11:03:00,2025-01-12T11:03:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T11:03:00,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T11:15:00,2025-01-12T11:45:00,528,"USEF Hunter Seat Medal 3'6""",14,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T12:27:00,2025-01-12T12:27:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T12:27:00,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T12:30:00,2025-01-12T13:00:00,533,"NHS Medal 3'3""",20,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T13:30:00,2025-01-12T13:30:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T13:30:00,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T13:30:00,2025-01-12T14:00:00,549,"NCEA Medal 3'3""",13,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 1,2025-01-12T14:39:00,2025-01-12T14:39:00,,END,,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2,2025-01-12T08:30:00,2025-01-12T09:00:00,812,$750 1.05m Amatuer Classic II.2b,29,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2,2025-01-12T10:27:00,2025-01-12T10:27:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T10:27:00,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2,2025-01-12T10:30:00,2025-01-12T11:00:00,811,$750 1.05m Junior Classic II.2b,20,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2,2025-01-12T12:00:00,2025-01-12T12:00:00,,Ring Maintenance,,Approximate Ring Maintain time: 2025-01-12T12:00:00,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2,2025-01-12T12:00:00,2025-01-12T12:30:00,810,$500 Novice Amateur Classic .95 II.2b,20,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2,2025-01-12T12:00:00,2025-01-12T12:30:00,809,$500 Novice Junior Classic .95 II.2b,10,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
-Jumper 2,2025-01-12T13:00:00,2025-01-12T13:00:00,,END,,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T07:30:00,2025-01-12T08:00:00,2201.0,$1000 1.40m CSI2* Two Phase 274.1.5.3,30.0,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T09:30:00,2025-01-12T09:30:00,,Ring Maintenance,,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T10:00:00,2025-01-12T10:30:00,4401.0,$1000 1.40m CSI4* Two Phase 274.1.5.3,22.0,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T11:36:00,2025-01-12T11:36:00,,Ring Maintenance,,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T11:45:00,2025-01-12T12:15:00,4402.0,"$32,000 1.45m CSI4* Two Phase 274.2.5",23.0,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T13:24:00,2025-01-12T13:24:00,,Ring Maintenance,,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T13:15:00,2025-01-12T13:45:00,648.0,$1500 1.40m Jumper II.1,12.0,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T14:21:00,2025-01-12T14:21:00,,Ring Maintenance,,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T14:15:00,2025-01-12T14:45:00,645.0,$1000 1.35 Meter Jumper II.1,28.0,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+WEC Grand Arena,2025-01-12T16:09:00,2025-01-12T16:09:00,,END,,,https://ingest-fhddb442.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,2025-01-12T07:30:00,2025-01-12T08:00:00,636.0,$500 1.20 Meter Jumper II.1,65.0,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,2025-01-12T11:15:00,2025-01-12T11:15:00,,Ring Maintenance,,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,2025-01-12T10:15:00,2025-01-12T10:45:00,639.0,$600 1.25 Meter Jumper II.1 ,33.0,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,2025-01-12T12:24:00,2025-01-12T12:24:00,,Ring Maintenance,,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,2025-01-12T12:00:00,2025-01-12T12:30:00,642.0,$1000 1.30 Meter Jumper II.1 ,36.0,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,2025-01-12T14:18:00,2025-01-12T14:18:00,,Ring Maintenance,,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,2025-01-12T13:45:00,2025-01-12T14:15:00,692.0,$250 7 Year Old Young Jumper - 1.30m II.1 ,8.0,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Stadium,2025-01-12T14:39:00,2025-01-12T14:39:00,,END,,,https://ingest-9bccd761.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,2025-01-12T07:30:00,2025-01-12T08:00:00,630.0,1.10m Jumper II.1 ,53.0,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,2025-01-12T10:39:00,2025-01-12T10:39:00,,Ring Maintenance,,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,2025-01-12T10:15:00,2025-01-12T10:45:00,633.0,1.15m Jumper II.1 ,45.0,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,2025-01-12T13:00:00,2025-01-12T13:00:00,,Ring Maintenance,,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,2025-01-12T12:30:00,2025-01-12T13:00:00,689.0,$250 6 Year Old Young Jumper 1.25m II.1 ,4.0,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,2025-01-12T13:12:00,2025-01-12T13:12:00,,Ring Maintenance,,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,2025-01-12T13:00:00,2025-01-12T13:30:00,686.0,5 Year Old Young Jumper 1.15m II ,6.0,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 1,2025-01-12T13:48:00,2025-01-12T13:48:00,,END,,,https://ingest-adaccb4a.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,2025-01-12T08:00:00,2025-01-12T08:30:00,624.0,0.95m Jumper II.1 ,38.0,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,2025-01-12T10:24:00,2025-01-12T10:24:00,,Ring Maintenance,,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,2025-01-12T09:45:00,2025-01-12T10:15:00,627.0,1.00m Jumper II.1 ,59.0,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,2025-01-12T13:12:00,2025-01-12T13:12:00,,Ring Maintenance,,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,2025-01-12T09:45:00,2025-01-12T10:15:00,695.0,$100 Thoroughbred Jumper II.1 1.0m ,2.0,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
+Jumper 2,2025-01-12T10:21:00,2025-01-12T10:21:00,,END,,,https://ingest-fe7fed0e.clipmyhorse.tv:9443/ingest/outstream_low/playlist.m3u8
