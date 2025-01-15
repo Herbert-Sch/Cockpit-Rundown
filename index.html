@@ -97,6 +97,7 @@
 
         .highlight-placeholder {
             background-color: #fffacd; /* Light Yellow */
+            text-align: center;
         }
 
         .current-event {
@@ -193,7 +194,7 @@
 
         function updateClock() {
             const now = new Date();
-            const options = { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+            const options = { timeZone: 'America/New_York', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true };
             const timeString = now.toLocaleTimeString('en-US', options);
             clockLeft.textContent = timeString;
             clockRight.textContent = timeString;
@@ -252,14 +253,14 @@
             filteredData.forEach((row, index) => {
                 const tr = document.createElement('tr');
                 if (row.competition === "Ring Maintenance" || row.competition === "Midway Drag") {
+                    tr.classList.add('highlight-placeholder');
                     tr.innerHTML = `
-                        <td></td>
-                        <td colspan="4">${row.competition}<br>Ungefähr ${row.starttime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
+                        <td colspan="5">${row.competition}</td>
                     `;
                 } else {
                     tr.innerHTML = `
-                        <td>${row.prepare.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || ''}</td>
-                        <td>${row.starttime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || ''}</td>
+                        <td>${row.prepare.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) || ''}</td>
+                        <td>${row.starttime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) || ''}</td>
                         <td>${row.number || ''}</td>
                         <td>${row.competition || ''}</td>
                         <td>${row.entries || ''}</td>
