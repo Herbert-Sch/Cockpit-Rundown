@@ -97,7 +97,6 @@
 
         .highlight-placeholder {
             background-color: #fffacd; /* Light Yellow */
-            text-align: center;
         }
 
         .current-event {
@@ -217,7 +216,7 @@
                         tab: row[0]?.trim() || "Default",
                         prepare: new Date(row[1]?.trim()),
                         starttime: new Date(row[2]?.trim()),
-                        number: row[3]?.trim(),
+                        number: row[3]?.trim() ? parseInt(row[3]?.trim(), 10) : '',
                         competition: row[4]?.trim(),
                         entries: row[5]?.trim() ? parseInt(row[5]?.trim(), 10) : '',
                         details: row[6]?.trim(),
@@ -255,7 +254,10 @@
                 if (row.competition === "Ring Maintenance" || row.competition === "Midway Drag") {
                     tr.classList.add('highlight-placeholder');
                     tr.innerHTML = `
-                        <td colspan="5">${row.competition}</td>
+                        <td>${row.prepare.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) || ''}</td>
+                        <td>${row.starttime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }) || ''}</td>
+                        <td>${row.number || ''}</td>
+                        <td colspan="2" style="text-align: center;">${row.competition}</td>
                     `;
                 } else {
                     tr.innerHTML = `
