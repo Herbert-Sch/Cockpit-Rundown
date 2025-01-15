@@ -165,7 +165,7 @@
                     <tr>
                         <th>Prepare</th>
                         <th>Starttime</th>
-                        <th>Nr.</th>
+                        <th>No.</th>
                         <th>Competition</th>
                         <th>Entries</th>
                     </tr>
@@ -218,7 +218,7 @@
                         starttime: new Date(row[2]?.trim()),
                         number: row[3]?.trim(),
                         competition: row[4]?.trim(),
-                        entries: row[5]?.trim(),
+                        entries: row[5]?.trim() ? parseInt(row[5]?.trim(), 10) : '',
                         details: row[6]?.trim(),
                         stream: row[7]?.trim()
                     }));
@@ -252,17 +252,19 @@
             filteredData.forEach((row, index) => {
                 const tr = document.createElement('tr');
                 if (row.competition === "Ring Maintenance" || row.competition === "Midway Drag") {
-                    tr.classList.add('highlight-placeholder');
+                    tr.innerHTML = `
+                        <td></td>
+                        <td colspan="4">${row.competition}<br>Ungefähr ${row.starttime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</td>
+                    `;
+                } else {
+                    tr.innerHTML = `
+                        <td>${row.prepare.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || ''}</td>
+                        <td>${row.starttime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || ''}</td>
+                        <td>${row.number || ''}</td>
+                        <td>${row.competition || ''}</td>
+                        <td>${row.entries || ''}</td>
+                    `;
                 }
-
-                tr.innerHTML = `
-                    <td>${row.prepare.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || ''}</td>
-                    <td>${row.starttime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) || ''}</td>
-                    <td>${row.number || ''}</td>
-                    <td>${row.competition || ''}</td>
-                    <td>${row.entries || ''}</td>
-                `;
-
                 tableBody.appendChild(tr);
             });
 
@@ -311,4 +313,3 @@
     </script>
 </body>
 </html>
-
